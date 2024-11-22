@@ -10,6 +10,7 @@ body {
   background-color: #141828;
   color: white;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 a {
@@ -176,6 +177,12 @@ footer p {
       align-items: center;
       gap: 10px;
   }
+  .backgroundimg{
+    width: 100%;
+  }
+  .title {
+      font-size: 40px;
+  }
 
   .hero h1 {
       font-size: 24px;
@@ -197,5 +204,8 @@ footer p {
     left: 70%;
     position: relative;
     
+  }
+  .footer{
+    width: 100%;
   }
 }
