@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Bar</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Spartan&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <ul class="nav-list">
+            <li><a class="nav-item" href="#explore">Explore</a></li>
+            <li><a class="nav-item" href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Background Section -->
+    <div class="backgroundimg">
+        <img src="HOME/PARTS/images/Earth.jpg" alt="Earth">
+        <h1 class="title">SOLAR TREK</h1>
+    </div>
+
+    <!-- Explore Section -->
+    <section class="hero" id="explore">
+        <h1>Explore the Solar System</h1>
+        <p>Unearth the mysteries of the solar system with an interactive and visually appealing experience.</p>
+        <div class="button-container">
+            <button id="moon-globe-btn">Explore 3D Moon Globe</button>
+            <button id="solar-orrery-btn">Explore Solar Orrery</button>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <div class="contact-section" id="contact">
+        <img class="astroid" src="HOME/PARTS/Astrid__icon.png" alt="Astroid Icon">
+        <div class="team-members">
+            <div class="team-member">
+                <img src="HOME/PARTS/images/mohannad.jpg" alt="Mohannad Essam">
+                <h3>Mohannad Essam</h3>
+                <p>Front-END DEV</p>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/mohannad-essam-092aa02b9/" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.instagram.com/trz_mohannad112/" class="social-icon"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="team-member">
+              <img src="HOME/PARTS/images/mands.jpg" alt="mands">
+              <h3>Mohannad Abd-ElNaby</h3>
+              <p>Front-END DEV</p>
+              <div class="social-icons">
+                  <a href="https://www.linkedin.com/in/mohannad-abdelnaby-738b19277/" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                  <a href="https://www.instagram.com/_mands_s_/" class="social-icon"><i class="fab fa-instagram"></i></a>
+              </div>
+          </div>
+            <!-- Other team members -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Created By <span class="team-name" href="#">BMOS Team</span></p>
+        <p>We are high school students passionate about space exploration.</p>
+        <p>SOLARTREK 2024 &#169; All Rights Reserved</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.getElementById('moon-globe-btn').addEventListener('click', function() {
+            window.location.href = 'lunar-trek-main/index.html';
+        });
+
+        document.getElementById('solar-orrery-btn').addEventListener('click', function() {
+            window.location.href = 'main.html';
+        });
+    </script>
+</body>
+</html>
