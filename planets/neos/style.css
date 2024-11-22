@@ -1,98 +1,97 @@
+/* Base styles */
 body {
-    overflow-x: hidden;
-    font-family: spartan;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-  }
-  a{
-    text-decoration: none;
-  }
-  .navbar { /* Dark color */
-    text-decoration: none;
-    margin-left: 78%;
-    position: absolute;
-    padding: 20px;
-    background-color: transparent;
-  }
-  
-  .nav-toggle {
-    display: none; /* Hide toggle on larger screens */
-    cursor: pointer;
-    font-size: 24px;
-    color: white;
-  }
-  
-  .nav-list {
-    text-decoration: none;
-    background-color: transparent;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-  }
-  
-  .nav-item {
-    text-decoration: none;
-    font-family: spartan;
-    padding: 0px 10px;
-    font-size: 22px;
-    margin: 0 15px;
-    color: white; /* Text color */
-    cursor: pointer;
-    transition: background-color 0.3s; /* Smooth transition */
-  }
-  
-  .nav-item:hover {
-    background-color: #df3d3d; /* Dark purple on hover */
-    border-radius: 15px;
-    transition-timing-function: ease-in-out;
-    transition-duration: .8s;
-    font-size: 25px;
-  }
-  
-  .nav-item.active {
-    background-color: #df3d3d; /* Highlight active link */
-    border-radius: 20px;}
-  
-  header {
-    background-color: #7A0016;
-    color: white;
-    padding: 12px 10px;
-    height: 35px;
-    text-align: left;
-  }
-  section {
-    margin: 20px;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
-  h1, h2 {
-    font-family: Bruno Ace;
-    color: white;
-    font-size: 20px;
-  }
-  .content {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  .card {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    flex: 1;
-    min-width: 280px;
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .card:hover {
-    transform: translateY(-10px); /* Lift effect on hover */
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  overflow-x: hidden;
+  font-family: spartan;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
 }
-  #neo-gallery {
+a {
+  text-decoration: none;
+}
+
+/* Navbar styles */
+.navbar {
+  text-decoration: none;
+  margin-left: 78%;
+  position: absolute;
+  padding: 20px;
+  background-color: transparent;
+}
+.nav-toggle {
+  display: none; /* Hide toggle on larger screens */
+  cursor: pointer;
+  font-size: 24px;
+  color: white;
+}
+.nav-list {
+  text-decoration: none;
+  background-color: transparent;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+.nav-item {
+  text-decoration: none;
+  font-family: spartan;
+  padding: 0px 10px;
+  font-size: 22px;
+  margin: 0 15px;
+  color: white; /* Text color */
+  cursor: pointer;
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+.title {
+  color: white;
+}
+
+/* Header */
+header {
+  background-color: #26406a;
+  color: white;
+  padding: 12px 10px;
+  height: 60px;
+  text-align: left;
+}
+
+/* Section */
+section {
+  margin: 20px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+h1, h2, h3 {
+  font-family: Bruno Ace;
+  color: #26406a;
+  font-size: 20px;
+}
+
+/* Card layout */
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  flex: 1;
+  min-width: 280px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+  transform: translateY(-10px); /* Lift effect on hover */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* NEO Gallery */
+#neo-gallery {
   margin: 40px;
   padding: 20px;
   background-color: #f9f9f9;
@@ -103,15 +102,11 @@ body {
   color: #2c3e50;
   margin-bottom: 20px;
 }
-
-/* Grid layout for NEO cards */
 .neo-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
 }
-
-/* Each NEO card */
 .neo-card {
   background-color: #fff;
   padding: 20px;
@@ -121,70 +116,112 @@ body {
   transition: transform 0.3s, box-shadow 0.3s;
 }
 .neo-card:hover {
-  transform: translateY(-10px); /* Lift effect on hover */
+  transform: translateY(-10px);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
-/* NEO image styling */
 .neo-card img {
   width: 100%;
   border-radius: 8px;
   margin-bottom: 15px;
-  height: 200px; /* Fixed height for uniformity */
-  object-fit: cover; /* Keep aspect ratio and fill the card */
+  height: 200px;
+  object-fit: cover;
 }
-
-/* Styling the NEO headings and text */
 .neo-card h3 {
   font-family: Bruno Ace;
   margin-top: 0;
-  color: #7A0016;
+  color: #141828;
 }
-
 .neo-card p {
   margin: 5px 0;
 }
-
 .neo-card p strong {
-  color: #2c3e50;
+  color: #26406a;
 }
+
+/* Toggle button */
 .toggle-btn {
   left: 37%;
-    position: relative;
-    background-color: #7A0016;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-bottom: 10px;
-  }
-  .toggle-btn:hover {
-    background-color: #962238;
-  }
+  position: relative;
+  background-color: #26406a;
+  color: #b7d7e7;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.toggle-btn:hover {
+  background-color: #26406a;
+}
+.toggle-content {
+  display: none;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
 
-  /* Toggleable content initially hidden */
-  .toggle-content {
-    display: none;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    margin-bottom: 20px;
+/* Footer */
+footer {
+  background-color: #26406a;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+footer p a {
+  font-weight: 600;
+  font-family: monospace;
+  color: #142b52;
+  text-decoration: none;
+  font-size: 1.8rem;
+  text-shadow: 1px 0 2px black;
+}
+footer p a:hover {
+  color: black;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .nav-list {
+    flex-direction: column;
+    margin-left: 0;
   }
-  footer{
-    background-color: #7a0016;
-    color: #fff;
-    height: 75  px;
-    text-align: center;
-    padding: 20px;
+  .navbar {
+    margin-left: 0;
+    position: static;
+    padding: 10px;
   }
-  footer p a{
-    font-weight: 600;
-    font-family:monospace;
-    color: #bf5959;
-    text-decoration: none;
-    font-size: 1.8rem;
-    text-shadow: 1px 0 2px black;
+  .toggle-btn {
+    left: 0;
+    margin: 10px auto;
   }
-  footer p a:hover{
-    color: black;
+}
+
+@media (max-width: 480px) {
+  .title{
+    display: hidden;
   }
+  header {
+    height: 45px;
+  }
+  .nav-item {
+    gap: 5px;
+    font-size: 15px;
+  }
+  h1, h2, h3 {
+    font-size: 18px;
+  }
+  .toggle-btn {
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+  .card {
+    max-width: 100%;
+  }
+  .neo-card {
+    max-width: 75%;
+  }
+  .neo-card img {
+    height: 150px;
+  }
+}
