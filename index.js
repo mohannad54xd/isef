@@ -4,31 +4,64 @@
   import getStarfield from "./src/getStarfield.js";
 
 
-  const w = window.innerWidth;
-  const h = window.innerHeight;
+  let w = window.innerWidth;
+  let h = window.innerHeight;
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(
-    75,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    1000
-  );
+  const camera = new THREE.PerspectiveCamera(75, w / h, 0.1, 1000);
   camera.position.set(-50, 90, 150);
+  
   const renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setSize(w, h);
   document.body.appendChild(renderer.domElement);
-  // THREE.ColorManagement.enabled = true;
+  
+  // Set tone mapping and color space
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.outputColorSpace = THREE.LinearSRGBColorSpace;
-
-
+  
+  // Add orbit controls
   const controls = new OrbitControls(camera, renderer.domElement);
-  controls.enableDamping = true; // Optional: smooth the controls
-  controls.dampingFactor = 0.25; // Optional: adjust damping
-  controls.maxDistance = 350; // Limit the maximum zoom-out distance
-  controls.minDistance = 20;  // Limit the minimum zoom-in distance
-  controls.enablePan = false;  // disable panning
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.25;
+  controls.maxDistance = 350;
+  controls.minDistance = 20;
+  controls.enablePan = false;
+  // Dynamic resize handling (media query logic)
+function onResize() {
+  w = window.innerWidth;
+  h = window.innerHeight;
 
+  // Update renderer size
+  renderer.setSize(w, h);
+
+  // Update camera aspect ratio
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+
+  // Optional: Adjust controls or scene elements
+  if (w < 768) {
+    // For mobile or small screens
+    camera.fov = 85; // Increase field of view
+    controls.minDistance = 10;
+    controls.maxDistance = 200;
+  } else if (w < 1200) {
+    // For tablets
+    camera.fov = 75;
+    controls.minDistance = 15;
+    controls.maxDistance = 300;
+  } else {
+    // For desktop
+    camera.fov = 65;
+    controls.minDistance = 20;
+    controls.maxDistance = 350;
+  }
+  camera.updateProjectionMatrix();
+}
+
+// Add event listener for resize
+window.addEventListener('resize', onResize);
+
+// Initial call to adjust settings based on the current window size
+onResize();
   
   const textureLoader = new THREE.TextureLoader();
 

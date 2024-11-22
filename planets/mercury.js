@@ -4,21 +4,64 @@ import { OrbitControls } from 'jsm/controls/OrbitControls.js';
 import getStarfield from "./src/getStarfield.js";
 import { getFresnelMat } from "./src/getFresnelMat.js";
 
-const w = window.innerWidth;
-const h = window.innerHeight;
+let w = window.innerWidth;
+let h = window.innerHeight;
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, w / h, 0.1, 1000);
 camera.position.z = 5;
+
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(w, h);
 document.body.appendChild(renderer.domElement);
-// THREE.ColorManagement.enabled = true;
+
+// Set tone mapping and color space
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.outputColorSpace = THREE.LinearSRGBColorSpace;
 
+// Add orbit controls
 const controls = new OrbitControls(camera, renderer.domElement);
-controls.enablePan = false;  // disable panning
+controls.enableDamping = true;
+controls.dampingFactor = 0.25;
+controls.maxDistance = 350;
+controls.minDistance = 20;
+controls.enablePan = false;
+// Dynamic resize handling (media query logic)
+function onResize() {
+w = window.innerWidth;
+h = window.innerHeight;
 
+// Update renderer size
+renderer.setSize(w, h);
+
+// Update camera aspect ratio
+camera.aspect = w / h;
+camera.updateProjectionMatrix();
+
+// Optional: Adjust controls or scene elements
+if (w < 768) {
+  // For mobile or small screens
+  camera.fov = 85; // Increase field of view
+  controls.minDistance = 5;
+  controls.maxDistance = 200;
+} else if (w < 1200) {
+  // For tablets
+  camera.fov = 75;
+  controls.minDistance = 10;
+  controls.maxDistance = 300;
+} else {
+  // For desktop
+  camera.fov = 65;
+  controls.minDistance = 5;
+  controls.maxDistance = 350;
+}
+camera.updateProjectionMatrix();
+}
+
+// Add event listener for resize
+window.addEventListener('resize', onResize);
+
+// Initial call to adjust settings based on the current window size
+onResize();
 const mercuryGroup = new THREE.Group();
 mercuryGroup.rotation.z = -23.4 * Math.PI / 180;
 scene.add(mercuryGroup);

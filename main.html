@@ -1,110 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nasa Space Apps Project (beta)</title>
-    <style>
-      body {
-        margin: 0;
-        overflow: hidden;
-      }
-    </style>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sun Exploration</title>
 
-    <link rel="stylesheet" href="planets/style.css">
-   
+  <!-- Favicon -->
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
 
-    <script type="importmap">
-			{
-				"imports": {
-					"three": "https://cdn.jsdelivr.net/npm/three@0.161/build/three.module.js",
-          "jsm/": "https://cdn.jsdelivr.net/npm/three@0.161/examples/jsm/"
-        }
-			}
-		</script>
-  </head>
-  <body>
-    <div class="planet-data">
-      <h2>Planetary Data</h2>
-      <div class="inside">
-        <div class="navbar">
-          <span id="prev" class="arrow" style="cursor: pointer;">&#9664;</span> <!-- Left arrow -->
-          <span id="next" class="arrow" style="cursor: pointer;">&#9654;</span> <!-- Right arrow -->
-          <div class="slides active" id="slide1">
-            <h2>Welcome to Sun Exploration</h2>
-            <p>Explore the fascinating details about our Sun!</p>
-          </div>
-        </div>
-  
-        <div class="slides" id="slide2">
-          <h2>Sun Overview</h2>
-          <p id="sun-name">Name: The Sun</p>
-          <p id="sun-type">Type: G-type main-sequence star (Yellow Dwarf)</p>
-        </div>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      gap: 10px;
+    }
 
-        <div class="slides" id="slide3">
-          <h2>Size and Radius</h2>
-          <p id="sun-radius">Equatorial Radius: 696,340 km</p>
-          <p id="sun-diameter">Diameter: 1.39 million km</p>
-        </div>
+    .slides {
+      display: none;
+      animation: fadeIn 0.5s ease-in-out;
+    }
 
-        <div class="slides" id="slide4">
-          <h2>Temperature</h2>
-          <p id="sun-temp">Core Temperature: 15 million °C</p>
-          <p id="sun-surface-temp">Surface Temperature: 5,500 °C</p>
-        </div>
+    .active {
+      display: block;
+    }
 
-        <div class="slides" id="slide5">
-          <h2>Sun's Energy</h2>
-          <p id="sun-energy">The Sun generates energy through nuclear fusion, converting hydrogen to helium in its core.</p>
-        </div>
+    h2 {
+      margin-bottom: 10px;
+      color: #b7d7e7;
+    }
 
-        <div class="slides" id="slide6">
-          <h2>Distance from Earth</h2>
-          <p id="sun-distance">Distance to Earth: 149.6 million km</p>
-        </div>
-
-        <div class="slides" id="slide7">
-          <h2>Solar System Influence</h2>
-          <p id="sun-influence">The Sun's gravity governs the orbits of all planets and celestial objects in the Solar System.</p>
-        </div>
-      </div>
-    </div>
-      </div>
-
+    p {
+      font-size: 18px;
+      line-height: 1.5;
+    }
 
     
-    </section>
-    <script type="text/javascript" src="./min.js/dat.gui.min.js"></script>
-    <script type="module" src="index.js"></script>
-    <script>
-      let currentSlide = 0;
-      const slides = document.querySelectorAll('.slides');
-      const totalSlides = slides.length;
+  </style>
 
-      function showSlide(index) {
-        slides.forEach((slide, i) => {
-          slide.classList.remove('active');
-          if (i === index) {
-            slide.classList.add('active');
-          }
-        });
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="planets/style.css" />
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.161/build/three.module.js",
+        "jsm/": "https://cdn.jsdelivr.net/npm/three@0.161/examples/jsm/"
       }
+    }
+  </script>
+</head>
+<body>
+  <div class="planet-data">
+    <h2>Planetary Data</h2>
+    <div class="inside">
+      <div class="navbar">
+        <span id="prev" class="arrow">&#9664;</span> <!-- Left arrow -->
+        <span id="next" class="arrow">&#9654;</span> <!-- Right arrow -->
+      </div>
 
-      document.getElementById('next').addEventListener('click', function () {
-        currentSlide = (currentSlide + 1) % totalSlides; // Move to the next slide
-        showSlide(currentSlide);
+      <!-- Slides -->
+      <div class="slides active" id="slide1">
+        <h2>Welcome to Sun Exploration</h2>
+        <p>Explore the fascinating details about our Sun!</p>
+      </div>
+
+      <div class="slides" id="slide2">
+        <h2>Sun Overview</h2>
+        <p id="sun-name">Name: The Sun</p>
+        <p id="sun-type">Type: G-type main-sequence star (Yellow Dwarf)</p>
+      </div>
+
+      <div class="slides" id="slide3">
+        <h2>Size and Radius</h2>
+        <p id="sun-radius">Equatorial Radius: 696,340 km</p>
+        <p id="sun-diameter">Diameter: 1.39 million km</p>
+      </div>
+
+      <div class="slides" id="slide4">
+        <h2>Temperature</h2>
+        <p id="sun-temp">Core Temperature: 15 million °C</p>
+        <p id="sun-surface-temp">Surface Temperature: 5,500 °C</p>
+      </div>
+
+      <div class="slides" id="slide5">
+        <h2>Sun's Energy</h2>
+        <p id="sun-energy">The Sun generates energy through nuclear fusion, converting hydrogen to helium in its core.</p>
+      </div>
+
+      <div class="slides" id="slide6">
+        <h2>Distance from Earth</h2>
+        <p id="sun-distance">Distance to Earth: 149.6 million km</p>
+      </div>
+
+      <div class="slides" id="slide7">
+        <h2>Solar System Influence</h2>
+        <p id="sun-influence">The Sun's gravity governs the orbits of all planets and celestial objects in the Solar System.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script type="text/javascript" src="./min.js/dat.gui.min.js"></script>
+  <script type="module" src="index.js"></script>
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slides');
+    const totalSlides = slides.length;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        if (i === index) {
+          slide.classList.add('active');
+        }
       });
+    }
 
-      document.getElementById('prev').addEventListener('click', function () {
-        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides; // Move to the previous slide
-        showSlide(currentSlide);
-      });
+    document.getElementById('next').addEventListener('click', function () {
+      currentSlide = (currentSlide + 1) % totalSlides; // Move to the next slide
+      showSlide(currentSlide);
+    });
 
-      // Add an event listener to the button
-
-    </script>
-  </body>
- 
-
+    document.getElementById('prev').addEventListener('click', function () {
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides; // Move to the previous slide
+      showSlide(currentSlide);
+    });
+  </script>
+</body>
 </html>
